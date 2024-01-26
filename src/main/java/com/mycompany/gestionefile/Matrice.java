@@ -1,3 +1,5 @@
+package com.mycompany.gestionefile;
+
 public class Matrice {
 
     char mv[][];

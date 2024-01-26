@@ -1,3 +1,5 @@
+package com.mycompany.gestionefile;
+
 public class Vigenere implements Runnable{
 
     private int ir;
@@ -20,16 +22,12 @@ public class Vigenere implements Runnable{
         popola();
     }
 
-    private void popola(){
-        int c,r,car;
-        for(r=ir; r<fr; r++) {
-            for(c=ic; c<fc; c++) {
-                car = r + c + 65;
-                if(car>90) {
-                    car = car - 26;
-                }
+    private void popola() {
+        int c, r, car;
+        for (r = ir; r < fr; r++) {
+            for (c = ic; c < fc; c++) {
+                car = (r + c) % 26 + 65;  // Modifica questa riga
                 this.matrix.setElemento(r, c, car);
-              
             }
         }
     }

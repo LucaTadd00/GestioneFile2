@@ -1,4 +1,4 @@
-package gestionefile;
+package com.mycompany.gestionefile;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -6,37 +6,39 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author MC
- * @version 12/01/23
- */
 
 public class Scrittore implements Runnable{
 
     String nomeFile;
+    int check;
     
     public Scrittore(String nomeFile){
         this.nomeFile = nomeFile;
+        this.check = 0;
     }
     
     @Override
     public void run() {
-        scrivi();
+        //scrivi();
     }
-    /**
-     * Scrive un file di testo usando la classe BufferedWriter
-     */
-    public void scrivi(){
+
+    public void scrivi(String input){
         BufferedWriter br=null;
+        
         
         try {
             //1) apro il file
             br = new BufferedWriter(
                     new FileWriter(nomeFile));
             //2) scrivo nel buffer
-            br.write("File in output");
+            br.write(input);
+            br.write(";");
+            check = check + 1;
+            if (check == 1) {
             br.write("\n\r");
+            check = 0;
+            }
+            
             //3) svuoto il buffer e salvo nel file i dati
             br.flush();         
         } catch (IOException ex) {

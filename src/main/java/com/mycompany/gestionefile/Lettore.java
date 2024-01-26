@@ -1,13 +1,8 @@
-package gestionefile;
+package com.mycompany.gestionefile;
 
 import java.io.FileReader;
 import java.io.IOException;
 
-/**
- *
- * @author MC
- * @ 12/01/23
- */
 
 public class Lettore extends Thread{
     String nomeFile;
