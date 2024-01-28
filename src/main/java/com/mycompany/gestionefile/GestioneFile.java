@@ -2,6 +2,8 @@ package com.mycompany.gestionefile;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+
 
 public class GestioneFile {
     public static Scanner s = new Scanner(System.in); 
@@ -10,10 +12,7 @@ public class GestioneFile {
     public static Scrittore copiatore = new Scrittore("copia.csv");
     public static Matrice matrix;
             
-  public static void main(String[] args) {
-               
-        //lettore.start();
-        //Thread threadScrittore = new Thread(scrittore);
+  public static void main(String[] args) {              
         
         System.out.println("inserisci la chiave di cifratura: ");
         String key = s.nextLine().toUpperCase(); 
@@ -21,24 +20,28 @@ public class GestioneFile {
                  
         matrixBuilder();
         login();
-        
+       System.out.println("Login riuscito! ora le tue credenziali sono salvate nel file 'output.csv'."); 
+       
         int choise = 5;
-    while(choise != 3) {
-        System.out.println("Login riuscito! ora le tue credenziali sono salvate nel file 'output.csv'"); 
-        System.out.println("ora scegli un opzione"); 
+    while(choise != 3) { 
+        try { 
+        
+        System.out.println("scegli un opzione"); 
         System.out.println("inserisci 1 per copiare il file con tutti gli username e password");
         System.out.println("inserisci 2 per aggiungere un nuovo utente"); 
         System.out.println("inserisci 3 per uscire dal programma"); 
+        System.out.println("consiglio: non effettuare la copia due volte o risciverai anche dati gia copiati!"); 
         System.out.println("scelta : "); 
         choise = s.nextInt();
         s.nextLine();
-        
+     
         switch(choise) {
   case 1:
+      try {
     String output = lettore.leggi();
-    System.out.println(output);
+      System.out.println(output);
     String[] userPass = output.split("\n");
-
+  
         for (String pair : userPass) {
 
             String[] div = pair.split(";");
@@ -46,19 +49,32 @@ public class GestioneFile {
             String user = div[0];
             String password = div[1];
             
-           copiatore.scrivi(user, password); 
-
-        }   
+           copiatore.scrivi(user, password);
+}       
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("copiature effettuata correttamente!");    
+         }
+   
     break;
   case 2:
     login();
     break;
   case 3:
       System.out.println("uscita in corso..."); 
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     break;
   default:
     System.out.println("scelta inesistente o non corretta"); 
 }
+    } catch (InputMismatchException e) { 
+    System.err.println("Errore: Input non numerico. Assicurati di inserire un numero valido.");
+    choise = 0;
+    s.nextLine();
+    }
     }
     
     }

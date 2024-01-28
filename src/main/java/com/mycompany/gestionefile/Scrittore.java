@@ -27,9 +27,15 @@ public class Scrittore implements Runnable{
         
         
         try {
+            if (check == 0) {
+            br = new BufferedWriter(new FileWriter(nomeFile));
+            br.write("");
+            br.flush();
+            br.close();
+            }
+                   
             //1) apro il file
-            br = new BufferedWriter(
-                    new FileWriter(nomeFile));
+            br = new BufferedWriter(new FileWriter(nomeFile, true));
             //2) scrivo nel buffer
             br.write(user);
             br.write(";");
@@ -38,7 +44,8 @@ public class Scrittore implements Runnable{
           
             
             //3) svuoto il buffer e salvo nel file i dati
-            br.flush();         
+             br.flush();   
+             check = check + 1;
         } catch (IOException ex) {
             Logger.getLogger(Scrittore.class.getName()).log(Level.SEVERE, null, ex);
         }
