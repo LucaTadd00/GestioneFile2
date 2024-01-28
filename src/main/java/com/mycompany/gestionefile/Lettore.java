@@ -15,23 +15,29 @@ public class Lettore extends Thread{
      * Legge il file senza tener conto del tipo di file
      * e lo mostra in output
      */
-    public void leggi(){
+    public String leggi() {
         FileReader fr;
-        int i; 
-        try { 
+        int i;
+        StringBuilder stringBuilder = new StringBuilder();
+
+        try {
             //1) apro il file
             fr = new FileReader(nomeFile);
-            //2) leggo carattere per carattere e lo stampo 
-            while ((i=fr.read()) != -1)
-                System.out.print((char) i);
-            
-            System.out.print("\n\r");
+           
+            while ((i = fr.read()) != -1) {
+                stringBuilder.append((char) i);
+            }
+
             //3) chiudo il file
             fr.close();
         } catch (IOException ex) {
             System.err.println("Errore in lettura!");
         }
+
+        // restituisco la stringa risultante
+        return stringBuilder.toString();
     }
+    
     
 
     public void run(){

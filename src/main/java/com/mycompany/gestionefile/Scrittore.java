@@ -22,7 +22,7 @@ public class Scrittore implements Runnable{
         //scrivi();
     }
 
-    public void scrivi(String input){
+    public void scrivi(String user, String pass){
         BufferedWriter br=null;
         
         
@@ -31,13 +31,11 @@ public class Scrittore implements Runnable{
             br = new BufferedWriter(
                     new FileWriter(nomeFile));
             //2) scrivo nel buffer
-            br.write(input);
+            br.write(user);
             br.write(";");
-            check = check + 1;
-            if (check == 1) {
+            br.write(pass);
             br.write("\n\r");
-            check = 0;
-            }
+          
             
             //3) svuoto il buffer e salvo nel file i dati
             br.flush();         

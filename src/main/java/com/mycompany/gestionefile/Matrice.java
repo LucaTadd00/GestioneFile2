@@ -58,7 +58,6 @@ public class Matrice {
 
         return(fcf);
     }
-    
 
 public String deCifra(String fcf){
         String fch="";
