@@ -86,12 +86,11 @@ public class GestioneFile {
         System.out.println("inserisci la password : ");
         String password = s.nextLine().toUpperCase();
         
-        String criptedUser = matrix.cifra(userName);
         String criptedPass = matrix.cifra(password);
             
-        scrittore.scrivi(criptedUser, criptedPass);
+        scrittore.scrivi(userName, criptedPass);
         
-        System.out.println("username criptato: " + criptedUser);
+        System.out.println("username : " + userName);
         System.out.println("password criptata: " + criptedPass);
         }
        

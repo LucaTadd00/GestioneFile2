@@ -23,41 +23,24 @@ public class Scrittore implements Runnable{
     }
 
     public void scrivi(String user, String pass){
-        BufferedWriter br=null;
-        
-        
-        try {
+try (BufferedWriter br = new BufferedWriter(new FileWriter(nomeFile, true))) {
             if (check == 0) {
-            br = new BufferedWriter(new FileWriter(nomeFile));
-            br.write("");
-            br.flush();
-            br.close();
+              BufferedWriter bc = new BufferedWriter(new FileWriter(nomeFile));
+            bc.write("");
+            bc.flush();
+            bc.close();
             }
-                   
-            //1) apro il file
-            br = new BufferedWriter(new FileWriter(nomeFile, true));
-            //2) scrivo nel buffer
+
             br.write(user);
             br.write(";");
             br.write(pass);
             br.write("\n\r");
-          
-            
-            //3) svuoto il buffer e salvo nel file i dati
-             br.flush();   
-             check = check + 1;
+
+            br.flush();
+            check++;
         } catch (IOException ex) {
             Logger.getLogger(Scrittore.class.getName()).log(Level.SEVERE, null, ex);
         }
-        finally{
-            if (br!=null)
-                try {
-                    //4)chiudo lo stream in uscita
-                    br.close();
-            } catch (IOException ex) {
-                Logger.getLogger(Scrittore.class.getName()).log(Level.SEVERE, null, ex);
-            }
                 
         }
     }
-}

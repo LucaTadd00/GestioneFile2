@@ -11,30 +11,20 @@ public class Lettore extends Thread{
         this.nomeFile = nomeFile;
     }
     
-    /**
-     * Legge il file senza tener conto del tipo di file
-     * e lo mostra in output
-     */
     public String leggi() {
-        FileReader fr;
-        int i;
-        StringBuilder stringBuilder = new StringBuilder();
+           StringBuilder stringBuilder = new StringBuilder();
 
-        try {
-            //1) apro il file
-            fr = new FileReader(nomeFile);
-           
+        try (FileReader fr = new FileReader(nomeFile)) {
+            int i;
+
             while ((i = fr.read()) != -1) {
                 stringBuilder.append((char) i);
             }
-
-            //3) chiudo il file
-            fr.close();
         } catch (IOException ex) {
             System.err.println("Errore in lettura!");
         }
 
-        // restituisco la stringa risultante
+        // Restituisco la stringa risultante
         return stringBuilder.toString();
     }
     
