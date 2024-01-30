@@ -28,7 +28,7 @@ Il progetto prevede le seguenti attività:
 - Salvare il contenuto delle variabili nel file di testo output.csv nel formato: `<username>;<password>` (i dati vengono cifrati secondo il cifrario di Vigénere).
 - Copiare il file output.csv in copia.csv.
 
-### ISSUE 2 (da iniziare):
+### ISSUE 2 (Terminato in data 30/01/2024):
 
 Il progetto prevede le seguenti attività:
 - Aggiungere metodi che implementino istruzioni di tipo try-with-resources.
