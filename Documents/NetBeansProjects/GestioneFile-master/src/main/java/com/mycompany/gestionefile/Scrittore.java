@@ -55,7 +55,7 @@ try (BufferedWriter br = new BufferedWriter(new FileWriter(nomeFile, true))) {
         /* utilizzando la classe DataOutputStream */
         try (DataOutputStream scrittore = new DataOutputStream(new FileOutputStream(nomeFile, true))){
             
-             if (id == 0) {
+             if (id == 1) {
                try (DataOutputStream ds = new DataOutputStream(new FileOutputStream(nomeFile))) {
                 ds.writeUTF("");
                 ds.flush();
@@ -63,13 +63,14 @@ try (BufferedWriter br = new BufferedWriter(new FileWriter(nomeFile, true))) {
             Logger.getLogger(Scrittore.class.getName()).log(Level.SEVERE, null, ex);
         }
             }
-             
-            scrittore.writeInt(id);
+             String idSt = Integer.toString(id);
+            scrittore.writeUTF(idSt);
+            scrittore.writeUTF(";");
             for (String elemento : elementi) {
                 scrittore.writeUTF(elemento);
                 scrittore.writeUTF(";");
             }
-            scrittore.writeUTF("\n"); // Modificato per la nuova riga
+            scrittore.writeUTF("\n");
             id = id + 1;
         } catch (IOException ex) {
             Logger.getLogger(Scrittore.class.getName()).log(Level.SEVERE, null, ex);

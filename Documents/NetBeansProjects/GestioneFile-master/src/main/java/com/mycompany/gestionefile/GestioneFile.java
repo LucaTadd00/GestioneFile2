@@ -11,26 +11,28 @@ public class GestioneFile {
     public static Scrittore scrittore = new Scrittore("output.csv");
     public static Scrittore copiatore = new Scrittore("copia.csv");
     public static Matrice matrix;
+    public static Scrittore scrittoreCSV = new Scrittore("user.csv");
             
   public static void main(String[] args) {              
         
-        System.out.println("inserisci la chiave di cifratura: ");
-        String key = s.nextLine().toUpperCase(); 
+        System.out.println("chiave di cifratura: GESTIONEFILE ");
+        String key = "GESTIONEFILE";
         matrix = new Matrice(key);
                  
         matrixBuilder();
-        login();
-       System.out.println("Login riuscito! ora le tue credenziali sono salvate nel file 'output.csv'."); 
+
+ 
        
-        int choise = 5;
-    while(choise != 3) { 
+        int choise = 6;
+    while(choise != 5) { 
         try { 
         
+        System.out.println("-----------MENU SCELTE------------"); 
         System.out.println("scegli un opzione"); 
         System.out.println("inserisci 1 per copiare il file con tutti gli username e password");
         System.out.println("inserisci 2 per aggiungere un nuovo utente"); 
         System.out.println("inserisci 3 per scrivere sul file user.csv");
-        System.out.println("inserisci 4 per scrivere sul file user.csv");
+        System.out.println("inserisci 4 per leggere dal file user.csv");
         System.out.println("inserisci 5 per uscire dal programma");
         System.out.println("consiglio: non effettuare la copia due volte o risciverai anche dati gia copiati!"); 
         System.out.println("scelta : "); 
@@ -62,8 +64,8 @@ public class GestioneFile {
     login();
     break;
   case 3:
-      Scrittore scrittoreCSV = new Scrittore("user.csv");
-      String[] elements = null;
+      
+      String[] elements = {"", "", "",} ;
         System.out.println("inserisci il tuo nome");
         elements[0] = s.nextLine();
         System.out.println("inserisci il tuo cognome");
@@ -75,6 +77,9 @@ public class GestioneFile {
     break;
 
   case 4:
+      Lettore lettoreCSV = new Lettore("user.csv");
+      System.out.println("inizio lettura");
+      lettoreCSV.leggiCSV();
       
     break;
   case 5:
@@ -106,6 +111,8 @@ public class GestioneFile {
         String criptedPass = matrix.cifra(password);
             
         scrittore.scrivi(userName, criptedPass);
+        
+        System.out.println("Login riuscito! ora le tue credenziali sono salvate nel file 'output.csv'.");
         
         System.out.println("username : " + userName);
         System.out.println("password criptata: " + criptedPass);
