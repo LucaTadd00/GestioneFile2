@@ -34,12 +34,12 @@ Il progetto prevede le seguenti attività:
 - Aggiungere metodi che implementino istruzioni di tipo try-with-resources.
 - Verificare il corretto funzionamento degli stessi.
 
-### ISSUE 3 (da iniziare):
+### ISSUE 3 (Terminato in data 1/02/2024):
 
 Il progetto prevede le seguenti attività:
 - Utilizzare le classi `DataInputStream` e `DataOutputStream` per scrivere e leggere il file user.csv con le stesse informazioni del file user.json.
 
-### ISSUE 4 (da iniziare):
+### ISSUE 4 (Terminato in data 2/02/2024):
 
 Il progetto prevede le seguenti attività:
 - Scrivere una classe `User` che consenta di contenere tutti i dati degli utenti.
