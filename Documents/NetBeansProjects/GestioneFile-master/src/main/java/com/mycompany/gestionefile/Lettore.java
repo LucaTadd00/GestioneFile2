@@ -12,6 +12,8 @@ public class Lettore extends Thread{
         this.nomeFile = nomeFile;
     }
     
+    //METODO PER LA LETTURA DA FILE, UTILIZZATO PER L'ISSUE 1
+    
     public String leggi() {
            StringBuilder stringBuilder = new StringBuilder();
 
@@ -28,6 +30,8 @@ public class Lettore extends Thread{
         // Restituisco la stringa risultante
         return stringBuilder.toString();
     }
+    
+    //METODO PER LA LETTURA DA FILE UTILIZZANDO DATAINPUTSTREAM, UTILIZZATO PER L'ISSUE 3
     
 public String leggiCSV() {
     StringBuilder content = new StringBuilder();
@@ -54,7 +58,7 @@ public String leggiCSV() {
 }
 
     
-    
+    //METODO RUN NON UTILIZZATO, NON UTILIZZO QUESTA CLASSE COME THREAD
 
     public void run(){
         leggi();

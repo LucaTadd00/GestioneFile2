@@ -21,11 +21,14 @@ public class Scrittore implements Runnable{
         
     }
     
+    //METODO RUN NON UTILIZZATO, NON UTILIZZO QUESTA CLASSE COME THREAD
     @Override
     public void run() {
         //scrivi();
     }
 
+    //METODO PER LA SCRITTURA DA FILE, UTILIZZATO PER L'ISSUE 1
+    
     public void scrivi(String user, String pass){
 try (BufferedWriter br = new BufferedWriter(new FileWriter(nomeFile, true))) {
             if (check == 0) {
@@ -50,6 +53,8 @@ try (BufferedWriter br = new BufferedWriter(new FileWriter(nomeFile, true))) {
         }
                 
         }
+    
+    //METODO PER LA SCRITTURA IN FILE UTILIZZANDO DATAOUTPUTSTREAM, UTILIZZATO PER L'ISSUE 3
     
      public void scriviCSV(String[] elementi) {
         /* utilizzando la classe DataOutputStream */
