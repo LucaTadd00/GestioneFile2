@@ -1,5 +1,6 @@
 package com.mycompany.gestionefile;
 
+
 public class Vigenere implements Runnable{
 
     private int ir;
